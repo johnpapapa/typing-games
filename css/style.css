@@ -1,0 +1,81 @@
+/* reset */
+form, div {padding: 0; margin: 0;}
+
+@media (max-width: 500px)
+{
+  .outer-window {
+      width: 500px;
+  }
+}
+@media (min-width: 770px)
+{
+  .outer-window {
+      width: 720px;
+  }
+}
+.outer-window {
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #FFF;
+    background: #6eb7ff;
+    border-bottom: solid 6px #3f87ce;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 9px;
+}
+.outer-window p {
+    margin: 0; 
+    padding: 0;
+}
+
+#restart-button input{
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #00BCD4;
+    background: #ECECEC;
+    transition: .4s;
+}
+#restart-button input:hover {
+    background: #636363;
+  }
+
+
+/* elements */
+.font-large {font-size:150%;}
+.font-middle {font-size:120%;}
+.font-small {font-size:100%;}
+
+.tc {text-align: center;}
+.vt {vertical-align: top;}
+.vm {vertical-align: middle;}
+.vb {vertical-align: bottom;}
+
+.wp100 {width: 100%;}
+.wp75 {width: 75%;}
+.wp50 {width: 50%;}
+.wp25 {width: 25%;}
+
+.p0 {padding: 0px;}
+.p5 {padding: 5px;}
+.p10 {padding: 10px;}
+.p20 {padding: 20px;}
+
+.m0 {margin: 0px;}
+.m5 {margin: 5px;}
+.m10 {margin: 10px;}
+.m20 {margin: 20px;}
+
+.box-sizing {box-sizing: border-box;}
+
+.disp-block {display:block;}
+.disp-inline {display: inline;}
+.disp-iblock {display: inline-block;}
+.disp-table {display: table;}
+.disp-tcell {display: table-cell;}
+.disp-flex {display: flex;}
+
+.border-curve {border-radius: 10px; padding: 5px;}
+
+

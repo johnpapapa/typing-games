@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name=”viewport” content=”width=device-width, initial-scale=1”>
+    <link rel="stylesheet" href="./css/style.css">
+    <script type="text/javascript" src="./js/typing.js"></script>
+  </head>
+  <body>
+
+    <!-- メインのゲームの画面 -->
+    <div class="outer-window">
+      <div id="games">
+        <div id="game-notices" style="visibility: visible;">赤く表示された文字を入力するとゲームが開始します</div>
+        <div id="result-time">0秒数経過</div>
+        <div id="moniter" class="font-large"></div>
+        <div id="result-miss">ミス = 0回</div>
+
+      </div>
+      <div id="restart-button" style="display: none;" class="">
+        <input type="button" value="ゲームをリスタート" onclick="window.location.reload();" />
+      </div>
+    </div>
+
+</html>
