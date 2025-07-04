@@ -11,16 +11,51 @@
 
     <!-- メインのゲームの画面 -->
     <div class="outer-window">
-      <div id="games">
+      <!--タイトル画面-->
+      <div id="title" style="display: block;">
+        <h1>title</h1>
+        <div id="title-buttons">
+          <input type="button" value="ゲーム開始する" onclick="game();" />
+        </div>
+
+        <div id="title-options">
+
+        </div>
+      </div>
+
+      <!--ゲーム画面-->
+      <div id="game" style="display: none;">
         <div id="game-notices" style="visibility: visible;">赤く表示された文字を入力するとゲームが開始します</div>
         <div id="result-time">0秒数経過</div>
         <div id="moniter" class="font-large"></div>
         <div id="result-miss">ミス = 0回</div>
+      </div>
 
+      <!--リザルト画面-->
+      <div id="result" style="display: none;">
+        <div>
+          <h1>GAME終了</h1>
+          <table>
+            <tr>
+              <th>クリア時間</th>
+              <td><div id="clear-time">0秒</div></td>
+            </tr>
+            <tr>
+              <th>打鍵数</th>
+              <td><div id="type-persec">0回/秒</div></td>
+            </tr>
+            <tr>
+              <th>ミス数</th>
+              <td><div id="miss-count">0回</div></td>
+            </tr>
+          </table>
+        </div>
+        <div id="result-buttons">
+          <input type="button" value="ゲームをリスタート" onclick="restartGame();" />
+          <input type="button" value="タイトルに戻る" onclick="restartTitle();" />
+        </div>
       </div>
-      <div id="restart-button" style="display: none;" class="">
-        <input type="button" value="ゲームをリスタート" onclick="window.location.reload();" />
-      </div>
+
     </div>
 
 </html>
