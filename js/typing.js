@@ -38,13 +38,16 @@ function stopTimer(){
 }
 
 //ページ読み込み時に問題文を作成
-window.onload = function(){
+function game(){
+  //ゲームが開始したフラグを立てる
   gameFlag = true;
+
   //問題文とカウント数をクリアする
   mondai="";
   cnt=0;
+  miss=0
   
-  //乱数作成
+  //乱数生成
   for ( var i = 0 ; i < QUESTION_COUNT ; i++ ){
     rnd[i] = Math.floor( Math.random() * 26 );
   }
@@ -55,9 +58,14 @@ window.onload = function(){
     question_string += '<p id=\"'+ i +'\" class="disp-inline">' + chars[ rnd[i] ] + "</p>";
   }
   
-  //問題を表示
-  document.getElementById("moniter").innerHTML = question_string;
+  //ゲーム画面を表示
+  document.getElementById("title").style.display ="none";//タイトル画面を非表示に
+  document.getElementById("game").style.display ="block";//ゲーム画面を表示
+
+  document.getElementById("moniter").innerHTML = question_string;//問題文を表示
   document.getElementById(cnt).style.color="#ff0000";//最初の文字だけ赤く
+  document.getElementById("result-time").innerHTML = "0秒経過";
+  document.getElementById("result-miss").innerHTML = "ミス = 0回";
 }
 
 //キー押下時の判定
@@ -101,14 +109,13 @@ document.onkeydown = function(event){
       stopTimer();
 
       //結果の表示
-      gameResult();
+      result();
     }
   }
   else if(kc == 27){
     //ESCキーをおされた時の処理
-    console.log(kc);
-    console.log(location.reload(true));
     document.location.reload(true);
+
   }
   else{
     //以下、キーコードが一致しない場合の処理
@@ -121,24 +128,27 @@ document.onkeydown = function(event){
 }
 
 //結果を表示する関数
-function gameResult(){
-  //経過時間を取得
-  var elapsedTime = typEnd - typStart;
+function result(){
+  //結果に関する情報算出
+  var elapsedTime = typEnd - typStart;//経過時間を取得
   var sec = Math.floor( elapsedTime/1000 );//秒数を取得
   var msec = elapsedTime % 1000;//ミリ秒を取得
-  //var typeOfsec = QUESTION_COUNT / (elapsedTime/1000);
-  var typeOfsec = Math.floor( QUESTION_COUNT / (elapsedTime/1000) * Math.pow( 10, 2 ) ) / Math.pow( 10, 2 )
-  
-  //結果画面の表示
-  var result_strings="";
-  result_strings += "<h1>GAME終了</h1>"
-  result_strings += "<p>クリア時間：" + sec + "." + msec + "秒</p>";
-  result_strings += "<p>打鍵数：" + typeOfsec + "回/秒</p>";
-  result_strings += "<p>ミス: " + miss + "回</p>";
-  
-  //問題枠にゲーム終了を表示
-  document.getElementById("games").innerHTML = result_strings;
+  var typePerSec = Math.floor( QUESTION_COUNT / (elapsedTime/1000) * Math.pow( 10, 2 ) ) / Math.pow( 10, 2 )
 
-  //ゲーム再スタートを行うボタンの表示
-  document.getElementById("restart-button").style.display ="block";
+  //結果画面の表示
+  document.getElementById("game").style.display ="none";//ゲーム画面を非表示に
+  document.getElementById("result").style.display ="block";//リザルト画面を表示
+
+  document.getElementById("clear-time").innerHTML = sec + "." + msec + "秒";
+  document.getElementById("type-persec").innerHTML = typePerSec + "回/秒";
+  document.getElementById("miss-count").innerHTML = miss;
+}
+
+function restartGame(){
+  document.getElementById("result").style.display ="none";
+  game();
+}
+
+function restartTitle(){
+  window.location.reload();
 }
